@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_29_220418) do
+ActiveRecord::Schema.define(version: 2018_09_30_015249) do
 
   create_table "arrecadacoes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "mes_ano"
     t.float "valor_base"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["mes_ano"], name: "index_arrecadacoes_on_mes_ano", unique: true
   end
 
   create_table "arrecadamentos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -42,7 +43,7 @@ ActiveRecord::Schema.define(version: 2018_09_29_220418) do
 
   create_table "produtos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nome"
-    t.integer "unidade"
+    t.string "unidade"
     t.text "observacao"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

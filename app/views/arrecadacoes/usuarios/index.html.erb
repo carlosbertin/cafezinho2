@@ -1,0 +1,43 @@
+<h1> Lista das Arrecadações do mês: <%= @arrecadacao.mes_ano %> </h1>
+
+<p><b><font color='red' size='5'>Usuários pendente pagamento</font></b></p>
+<table border="1">
+    <tr bgcolor="F16565">
+        <th>CPF</th>        
+        <th>Nome</th>
+        <th>Valor Pago</th>
+        <th>Pagamento</th>
+    </tr>
+    <tr>
+    <% @usuarios.usuario_pendente_pagamento(@arrecadacao.mes_ano).each do |usuario_pendente_pagamento| %>
+    <tr>
+        <td><%= usuario_pendente_pagamento.cpf %></td>    
+        <td><%= usuario_pendente_pagamento.nome %></td>
+        <td><%= number_to_currency_br(usuario_pendente_pagamento.valor_pago) %></td>
+        <td><%= link_to 'Registrar', new_arrecadacao_arrecadamento_path(@arrecadacao, usuario_id: usuario_pendente_pagamento.id) %></td>
+    </tr>
+    <% end %>
+</table>
+
+<p><b><font color='1A6C2C' size='5'>Usuários que já efetuaram o pagamento</font></b></p>
+<table border="1">
+    <tr bgcolor="4DDCB3">
+        <th>CPF</th>        
+        <th>Nome</th>
+        <th>Valor Pago</th>
+        <th colspan='2'>Pagamento</th>
+    </tr>
+    <tr>
+    <% @usuarios.usuario_com_pagamento(@arrecadacao.mes_ano).each do |usuario_com_pagamento_ok| %>
+    <tr>
+        <td><%= usuario_com_pagamento_ok.cpf %></td>    
+        <td><%= usuario_com_pagamento_ok.nome %></td>
+        <td><%= number_to_currency_br(usuario_com_pagamento_ok.valor_pago) %></td>
+        <td><%= link_to 'Editar', edit_arrecadacao_arrecadamento_path(@arrecadacao, usuario_id: usuario_com_pagamento_ok.id) %></td>
+        <td><%= link_to 'Apagar', arrecadacao_arrecadamento_path(@arrecadacao, usuario_id: usuario_com_pagamento_ok.id), method: :delete, data: { confirm: 'Deseja realmente apagar o pagamento deste usuário neste mês ?'} %></td>
+    </tr>
+    <% end %>
+</table>
+
+</br>
+<%= link_to 'Lista de Arrecadações', arrecadacoes_path %>

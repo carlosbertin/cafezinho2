@@ -1,0 +1,22 @@
+<h1> Lista de Arrecadações </h1>
+<table border=1>
+    <tr>
+        <th>id</th>
+        <th>Mês/Ano</th>
+        <th>Valor Base</th>
+        <th>editar</th>
+        <th>deletar</th>
+    </tr>
+    <% @arrecadacoes.each do |arrecadacao| %>
+    <tr>
+        <td><%= arrecadacao.id %></td>
+        <td><%= link_to arrecadacao.mes_ano, arrecadacao_usuarios_path(arrecadacao.id), :action => :index %></td>
+        <td><%= number_to_currency_br(arrecadacao.valor_base) %></td>
+        <td><%= link_to 'Editar', action: 'edit', id: arrecadacao %></td>
+        <td><%= link_to 'Delete', {action: 'destroy', id: arrecadacao}, method: :delete, data: { confirm: 'Deseja realmente deletar esta arrecadação ?'} %></td>
+    </tr>
+    <% end %>
+</table>
+
+<br/>
+<%= link_to 'Nova', action: 'new' %>

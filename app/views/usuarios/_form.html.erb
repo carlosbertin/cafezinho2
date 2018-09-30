@@ -1,0 +1,14 @@
+<% if @usuario.errors.any? %>
+    <ul>
+        <% @usuario.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_for @usuario do |f| %>
+    Nome: <%= f.text_field :nome %> <br/>
+    CPF: <%= f.text_field :cpf %> <br/>
+    Data desativação: <%= f.text_field :data_desativacao %> <br/>
+    <%= f.submit %>
+<% end %>

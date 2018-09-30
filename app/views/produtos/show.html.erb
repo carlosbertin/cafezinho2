@@ -1,0 +1,22 @@
+<h1>Exibindo Produto</h1>
+<p>
+<b>id: </b>
+<%= @produto.id %>
+</p>
+<p>
+<b>Nome: </b>
+<%= @produto.nome %>
+</p>
+<p>
+<b>Unidade: </b>
+<%= @produto.unidade %>
+</p>
+<p>
+<b>Observação: </b>
+<%= @produto.observacao %>
+</p>
+<br/>
+<%= link_to 'Editar', action: 'edit', id: @produto %>
+<br/>
+<%= link_to 'Lista Produtos', action: 'index' %>
+

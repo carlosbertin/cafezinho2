@@ -1,0 +1,20 @@
+<% if @arrecadamento.errors.any? %>
+    <ul>
+        <% @arrecadamento.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_for [@arrecadamento.arrecadacao] do |f| %>
+    <b>Mês/Ano:</b>  <%= f.object.mes_ano %> <br/>
+    <b>CPF:</b> <%#= f.object.cpf %> <br/>
+    <b>Nome:</b> <%#= f.object.valor_pago %> <br/>
+    <b>Valor Pago:</b> <%#= f.number_field :valor_pago, value: number_to_currency(f.object.valor_pago.to_f, delimiter: '', unit: ''), step: :any %> <br/>
+    <%#= f.hidden_field :usuario_id, value: @arrecadamento.usuario_id %>
+    <%= f.hidden_field :arrecadacao_id, value: @arrecadamento.arrecadacao_id %>
+    <%= f.submit 'Registrar/Editar' %>
+<% end %>
+
+</br>
+<%#= link_to "Lista de Arrecadações do mês #{@arrecadamento.arrecadacao.mes_ano}", arrecadacao_usuarios_path(@arrecadamento.arrecadacao.id) %>

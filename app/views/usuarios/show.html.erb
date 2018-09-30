@@ -1,0 +1,22 @@
+<h1>Exibindo Usuário</h1>
+<p>
+<b>id: </b>
+<%= @usuario.id %>
+</p>
+<p>
+<b>Nome: </b>
+<%= @usuario.nome %>
+</p>
+<p>
+<b>CPF: </b>
+<%= @usuario.cpf %>
+</p>
+<p>
+<b>data_desativacao: </b>
+<%= @usuario.data_desativacao %>
+</p>
+<br/>
+<%= link_to 'Editar', action: 'edit', id: @usuario %>
+<br/>
+<%= link_to 'Lista Usuários', action: 'index' %>
+

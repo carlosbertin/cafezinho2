@@ -1,0 +1,14 @@
+<% if @produto.errors.any? %>
+    <ul>
+        <% @produto.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_for @produto do |f| %>
+    Nome: <%= f.text_field :nome %> <br/>
+    Unidade: <%= f.text_field :unidade %> <br/>
+    Observação: <%= f.text_area :observacao %> <br/>
+    <%= f.submit %>
+<% end %>

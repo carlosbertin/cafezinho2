@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cafezinho2</title>
+    <title>Cafezinho</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,18 @@
   </head>
 
   <body>
+    <table bgcolor='#F4A460' width='100%'>
+      <tr>
+        <td><b><%=link_to 'Home', root_path %></b></td>
+      </tr>
+    </table>
+    </br>
     <%= yield %>
+    </br></br>
+    <table bgcolor='#F4A460' width='100%'>
+      <tr>
+        <td></br></td>
+      </tr>
+    </table>
   </body>
 </html>

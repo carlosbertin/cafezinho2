@@ -30,6 +30,18 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
+gem 'nokogiri', '~> 1.8.4'
+
+group :development, :test do
+  gem 'factory_bot_rails'
+end
+
+# Want to run against the master branch? You'll need to include the dependent RSpec repos as well. Add the following to your Gemfile:
+%w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+  gem lib, :git => "https://github.com/rspec/#{lib}.git", :branch => 'master'
+end
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
