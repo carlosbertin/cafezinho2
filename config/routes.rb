@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :usuarios
   resources :produtos
   resources :arrecadacoes do
-    resources :arrecadamentos, except: [:show, :index], param: :usuario_id
+    resources :arrecadamentos, except: [:show, :index]
     resources :usuarios, only: :index, controller: 'arrecadacoes/usuarios'
   end
   
