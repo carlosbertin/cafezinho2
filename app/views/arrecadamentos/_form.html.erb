@@ -6,14 +6,14 @@
     </ul>
 <% end %>
 
-<%= form_for [@arrecadamento.arrecadacao, @arrecadamento], method: :post do |f| %>
+<%= form_for([@arrecadamento.arrecadacao, @arrecadamento], url: arrecadacao_arrecadamentos_path(@arrecadamento.arrecadacao), method: :post) do |f| %>
     <b>Mês/Ano:</b>  <%= f.object.arrecadacao.mes_ano %> <br/>
     <b>CPF:</b> <%= @usuario.cpf %> <br/>
     <b>Nome:</b> <%= @usuario.nome %> <br/>
-    <b>Valor Pago:</b> <%= f.number_field @arrecadamento.valor_pago, value: number_to_currency(@arrecadamento.valor_pago.to_f, delimiter: '', unit: ''), step: :any %> <br/>
+    <b>Valor Pago:</b> <%= f.number_field :valor_pago, value: number_to_currency(@arrecadamento.valor_pago.to_f, delimiter: '', unit: ''), step: :any %> <br/>
     <%= f.hidden_field :usuario_id, value: @usuario.id %>
     <%= f.hidden_field :arrecadacao_id, value: @arrecadamento.arrecadacao.id %>
-    <%= f.submit 'Registrar/Editar' %>
+    <%= f.submit %>
 <% end %>
 
 </br>

@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   resources :produtos
   resources :arrecadacoes do
     resources :arrecadamentos, except: [:show, :index]
-    resources :usuarios, only: :index, controller: 'arrecadacoes/usuarios'
+    #resources :usuarios, only: :index, controller: 'arrecadacoes/usuarios'
+    resources :usuarios, controller: 'arrecadacoes/usuarios'
   end
   
 end
