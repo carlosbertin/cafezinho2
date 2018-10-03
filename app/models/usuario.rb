@@ -12,7 +12,7 @@ class Usuario < ApplicationRecord
 
     #scope :usuario_pagamento_ok, -> { where.not(id: Usuario.usuario_pendente_pagamento.pluck(:id)) }
     scope :usuario_com_pagamento, -> mes_ano do
-        select('usuarios.*, arrecadamentos.valor_pago as valor_pago').
+        select('usuarios.*, arrecadamentos.valor_pago as valor_pago, arrecadamentos.id as arrecadamento_id ').
         joins(:arrecadamentos, :arrecadacoes).
         where.not(arrecadamentos: {valor_pago: nil})#.
         #merge(Arrecadacao.por_mes_ano(mes_ano))

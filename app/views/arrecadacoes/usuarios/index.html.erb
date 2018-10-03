@@ -33,8 +33,8 @@
         <td><%= usuario_com_pagamento_ok.cpf %></td>    
         <td><%= usuario_com_pagamento_ok.nome %></td>
         <td><%= number_to_currency_br(usuario_com_pagamento_ok.valor_pago) %></td>
-        <td>Editar<%#= link_to 'Editar', edit_arrecadacao_arrecadamento_path(@arrecadacao, usuario_id: usuario_com_pagamento_ok.id) %></td>
-        <td>Apagar<%#= link_to 'Apagar', arrecadacao_arrecadamento_path(@arrecadacao, usuario_id: usuario_com_pagamento_ok.id), method: :delete, data: { confirm: 'Deseja realmente apagar o pagamento deste usuário neste mês ?'} %></td>
+        <td><%= link_to 'Editar', edit_arrecadacao_arrecadamento_path(@arrecadacao, usuario_com_pagamento_ok.arrecadamento_id) %></td>
+        <td><%= link_to 'Apagar', arrecadacao_arrecadamento_path(@arrecadacao, usuario_com_pagamento_ok.arrecadamento_id), method: :delete, data: { confirm: 'Deseja realmente apagar o pagamento deste usuário neste mês ?'} %></td>
     </tr>
     <% end %>
 </table>
