@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_30_015249) do
+ActiveRecord::Schema.define(version: 2018_10_04_172321) do
 
   create_table "arrecadacoes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "mes_ano"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2018_09_30_015249) do
     t.bigint "usuario_id"
     t.bigint "arrecadacao_id"
     t.index ["arrecadacao_id"], name: "index_arrecadamentos_on_arrecadacao_id"
+    t.index ["usuario_id", "arrecadacao_id"], name: "index_arrecadamentos_on_usuario_id_and_arrecadacao_id", unique: true
     t.index ["usuario_id"], name: "index_arrecadamentos_on_usuario_id"
   end
 
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 2018_09_30_015249) do
     t.bigint "produto_id"
     t.bigint "arrecadacao_id"
     t.index ["arrecadacao_id"], name: "index_compras_on_arrecadacao_id"
+    t.index ["produto_id", "arrecadacao_id"], name: "index_compras_on_produto_id_and_arrecadacao_id", unique: true
     t.index ["produto_id"], name: "index_compras_on_produto_id"
   end
 

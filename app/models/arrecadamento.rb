@@ -2,6 +2,8 @@ class Arrecadamento < ApplicationRecord
     belongs_to :usuario
     belongs_to :arrecadacao
 
+    validates :valor_pago, numericality: { greater_than: 0 , message: '- deverá ser maior que 0 (zero).'}
+
     # Neste código está sendo feito um join com o modelo Arrecadacao, onde já é passado como
     # parâmetro/filtro o mês e ano atuais através de um alias "arrecadacao_atual".
     # scope :por_arrecadacoes_atuais, -> do

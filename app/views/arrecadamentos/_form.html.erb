@@ -6,7 +6,7 @@
     </ul>
 <% end %>
 
-<%= form_for([@arrecadamento.arrecadacao, @arrecadamento], url: arrecadacao_arrecadamentos_path(@arrecadamento.arrecadacao), method: :post) do |f| %>
+<%= form_for([@arrecadamento.arrecadacao, @arrecadamento]) do |f| %>
     <b>Mês/Ano:</b>  <%= f.object.arrecadacao.mes_ano %> <br/>
     <b>CPF:</b> <%= @usuario.cpf %> <br/>
     <b>Nome:</b> <%= @usuario.nome %> <br/>

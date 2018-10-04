@@ -4,7 +4,7 @@ class ArrecadamentosController < ApplicationController
     def destroy
         @arrecadamento = Arrecadamento.find(params[:id])
         @arrecadamento.destroy
-        redirect_to :controller => 'arrecadacoes', :action => 'index'
+        redirect_to arrecadacao_usuarios_path(@arrecadamento.arrecadacao.id)
     end
 
     def new 
@@ -17,6 +17,7 @@ class ArrecadamentosController < ApplicationController
         if @arrecadamento.save
             redirect_to arrecadacao_usuarios_path(@arrecadamento.arrecadacao.id)
         else
+            @usuario = @arrecadamento.usuario
             render 'new'
         end
     end
@@ -29,8 +30,9 @@ class ArrecadamentosController < ApplicationController
     def update
         @arrecadamento = Arrecadamento.find(params[:id])
         if @arrecadamento.update_attributes arrecadamento_params
-            redirect_to :controller => 'arrecadacoes', :action => 'index'
+            redirect_to arrecadacao_usuarios_path(@arrecadamento.arrecadacao.id)
         else
+            @usuario = @arrecadamento.usuario
             render 'edit'
         end
     end
