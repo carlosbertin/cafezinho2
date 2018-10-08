@@ -1,0 +1,27 @@
+<h1> Lista de Compras </h1>
+<table border=1>
+    <tr>
+        <th>id</th>
+        <th>Produto</th>
+<!--    <th>Unidade</th>
+        <th>Observação</th>
+        <th>Preço</th>
+        <th>Quantidade</th>
+        <th>Data Compra</th>
+        <th>editar</th>
+        <th>deletar</th>       -->
+    </tr>
+    <% @compras.each do |compra| %>
+    <tr>
+        <td><%= compra.id %></td>
+        <td><%= compra.nome %></td>
+        <td><%#= link_to compra.mes_ano, compra_usuarios_path(compra.id), :action => :index %></td>
+        <td><%#= number_to_currency_br(compra.valor_base) %></td>
+        <td><%#= link_to 'Editar', action: 'edit', id: compra %></td>
+        <td><%#= link_to 'Delete', {action: 'destroy', id: compra}, method: :delete, data: { confirm: 'Deseja realmente deletar esta arrecadação ?'} %></td>
+    </tr>
+    <% end %>
+</table>
+
+<br/>
+<%= link_to 'Nova', action: 'new' %>

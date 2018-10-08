@@ -1,2 +1,0 @@
-class ProdutosCompradosController < ApplicationController
-end

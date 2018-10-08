@@ -9,11 +9,11 @@
         <th>Pagamento</th>
     </tr>
     <tr>
-    <% @usuarios.usuario_pendente_pagamento(@arrecadacao.mes_ano).each do |usuario_pendente_pagamento| %>
+    <% @usuarios.usuario_pendente_pagamento(@arrecadacao.id).each do |usuario_pendente_pagamento| %>
     <tr>
         <td><%= usuario_pendente_pagamento.cpf %></td>    
         <td><%= usuario_pendente_pagamento.nome %></td>
-        <td><%= number_to_currency_br(usuario_pendente_pagamento.valor_pago) %></td>
+        <td><%= number_to_currency_br(0) %></td>
         <td><%= link_to 'Registrar', new_arrecadacao_arrecadamento_path(arrecadacao_id: @arrecadacao.id, usuario_id: usuario_pendente_pagamento.id) %></td>
     </tr>
     <% end %>
@@ -28,7 +28,7 @@
         <th colspan='2'>Pagamento</th>
     </tr>
     <tr>
-    <% @usuarios.usuario_com_pagamento(@arrecadacao.mes_ano).each do |usuario_com_pagamento_ok| %>
+    <% @usuarios.usuario_com_pagamento(@arrecadacao.id).each do |usuario_com_pagamento_ok| %>
     <tr>
         <td><%= usuario_com_pagamento_ok.cpf %></td>    
         <td><%= usuario_com_pagamento_ok.nome %></td>
