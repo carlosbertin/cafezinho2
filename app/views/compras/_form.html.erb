@@ -6,17 +6,16 @@
     </ul>
 <% end %>
 
-<%= form_for([@compra.arrecadacao, @compra]) do |f| %>
-    <b>Produto:</b>  <%= f.object.arrecadacao.nome %> <br/>
-    <b>Unidade:</b>  <%= f.object.arrecadacao.unidade %> <br/>
-    <b>Observação:</b>  <%= f.object.arrecadacao.observacao %> <br/>
-    <b>CPF:</b> <%= @usuario.cpf %> <br/>
-    <b>Nome:</b> <%= @usuario.nome %> <br/>
-    <b>Valor Pago:</b> <%= f.number_field :valor_pago, value: number_to_currency(@compra.valor_pago.to_f, delimiter: '', unit: ''), step: :any %> <br/>
-    <%= f.hidden_field :usuario_id, value: @usuario.id %>
-    <%= f.hidden_field :arrecadacao_id, value: @compra.arrecadacao.id %>
+<%= form_for(@compra) do |f| %>
+    Mês/Ano: <%= f.collection_select(:arrecadacao_id, Arrecadacao.all, :id, :mes_ano) %> <br/>
+    Produto: <%= f.collection_select(:produto_id, Produto.all, :id, :nome) %> <br/>
+    Unidade: <%= f.object.unidade %> <br/>
+    Observação: <%= f.object.observacao %> <br/>
+    Preço: <%= f.number_field :preco, value: number_to_currency(f.object.preco.to_f, delimiter: '', unit: ''), step: :any %> <br/>
+    Quantidade: <%= f.number_field :quantidade, value: f.object.quantidade %> <br/>
+    Data da Compra: <%= f.date_field :data_compra, as: :date, value: f.object.try(:strftime,"%d/%m/%Y") %> </br>
     <%= f.submit %>
 <% end %>
 
 </br>
-<%= link_to "Lista de Arrecadações do mês #{@compra.arrecadacao.mes_ano}", arrecadacao_usuarios_path(@compra.arrecadacao.id) %>
+<%= link_to 'Lista de Compras', compras_path %>

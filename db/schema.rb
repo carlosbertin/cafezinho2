@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_04_172321) do
+ActiveRecord::Schema.define(version: 2018_10_09_173509) do
 
   create_table "arrecadacoes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "mes_ano"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2018_10_04_172321) do
     t.datetime "updated_at", null: false
     t.bigint "produto_id"
     t.bigint "arrecadacao_id"
+    t.datetime "data_compra"
     t.index ["arrecadacao_id"], name: "index_compras_on_arrecadacao_id"
     t.index ["produto_id", "arrecadacao_id"], name: "index_compras_on_produto_id_and_arrecadacao_id", unique: true
     t.index ["produto_id"], name: "index_compras_on_produto_id"

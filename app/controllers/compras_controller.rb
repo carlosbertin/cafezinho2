@@ -1,55 +1,51 @@
 class ComprasController < ApplicationController
-    #before_action :set_compra, only: :new
+    include ArrecadacoesHelper
 
     def index
-        @compras = Compra.all
+        @compras = Compra.includes(:produto, :arrecadacao)
     end
 
     def destroy
         @compra = Compra.find(params[:id])
         @compra.destroy
-        redirect_to arrecadacao_usuarios_path(@compra.arrecadacao.id)
+        redirect_to compras_path
     end
 
-    def new 
-        @usuario = Usuario.find(params[:usuario_id])
-        @compra = @arrecadacao.arrecadamentos.build(usuario_id: params[:usuario_id])
+    def show
+        @compra = Compra.find(params[:id])
+    end
+
+    def new
+        @compra = Compra.new
     end
 
     def create
         @compra = Compra.new(compra_params)
         if @compra.save
-            redirect_to arrecadacao_usuarios_path(@compra.arrecadacao.id)
+            redirect_to(action: 'show', id: @compra)
         else
-            @usuario = @compra.usuario
             render 'new'
         end
     end
 
     def edit
-        @compra = Compra.find(params[:id])
-        @usuario = Usuario.find(@compra.usuario_id)
+        #@compra = Compra.find(params[:id])
+        @compra = Compra.includes(:produto, :arrecadacao).find(params[:id])
     end
 
     def update
         @compra = Compra.find(params[:id])
         if @compra.update_attributes compra_params
-            redirect_to arrecadacao_usuarios_path(@compra.arrecadacao.id)
+            redirect_to(action: 'show', id: @compra)
         else
-            @usuario = @compra.usuario
             render 'edit'
         end
     end
 
     private
 
-    def set_compra
-        @arrecadacao = Arrecadacao.find(params[:arrecadacao_id])
-    end
-
     def compra_params
-        params[:valor_pago] = params[:valor_pago].to_f
-        params.require(:arrecadamento).permit(:valor_pago, :usuario_id, :arrecadacao_id)
+        params.require(:compra).permit(:arrecadacao_id, :produto_id, :preco, :quantidade, :data_compra)
     end
 
 end

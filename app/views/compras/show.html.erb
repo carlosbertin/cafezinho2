@@ -1,0 +1,30 @@
+<h1>Exibindo Compra</h1>
+<p>
+<b>id: </b>
+<%= @compra.id %>
+</p>
+<p>
+<b>id produto: </b>
+<%= @compra.produto_id %>
+</p>
+<p>
+<b>id arrecadacao: </b>
+<%= @compra.arrecadacao_id %>
+</p>
+<p>
+<b>Preço: </b>
+<%= @compra.preco %>
+</p>
+<p>
+<b>Quantidade: </b>
+<%= @compra.quantidade %>
+</p>
+<p>
+<b>Data Compra: </b>
+<%= format_date_br(@compra.data_compra) %>
+</p>
+<br/>
+<%= link_to 'Editar', action: 'edit', id: @compra %>
+<br/>
+<%= link_to 'Lista Compras', action: 'index' %>
+
