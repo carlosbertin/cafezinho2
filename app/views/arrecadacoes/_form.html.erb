@@ -8,6 +8,6 @@
 
 <%= form_for @arrecadacao do |f| %>
     Mês/Ano: <%= f.select :mes_ano, lista_mes_ano %> <br/>
-    Valor Base: <%= f.number_field :valor_base, value: number_to_currency(f.object.valor_base.to_f, delimiter: '', unit: ''), step: :any %> <br/>
+    Valor Base: <%= f.number_field :valor_base, value: f.object.valor_base.to_f, step: :any %> <br/>
     <%= f.submit %>
 <% end %>
