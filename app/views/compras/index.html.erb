@@ -1,4 +1,11 @@
 <h1> Lista de Compras </h1>
+
+<%= form_tag compras_path, :action => 'index', :method => 'get' do %>
+    <p>
+        Filtre pelo Mês/Ano: <%= select_tag :search, options_for_select([['TODOS',0]] + Arrecadacao.all.collect{|arrec| [arrec.mes_ano, arrec.id]}, params[:search]), :onchange => 'this.form.submit();' %>
+    </p>
+<% end %>
+
 <table border=1>
     <tr>
         <th>id</th>
@@ -6,7 +13,7 @@
         <th>Unidade</th>
         <th>Observação</th>
         <th>Preço</th>
-        <th>Quantidade</th>
+        <th>Qtd</th>
         <th>Data Compra</th>
         <th>Ref. Mês/Ano</th>
         <th>editar</th>

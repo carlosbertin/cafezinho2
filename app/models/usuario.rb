@@ -10,8 +10,9 @@ class Usuario < ApplicationRecord
     end
 
     scope :usuario_com_pagamento, -> arrecadacao_id do
-        select('usuarios.*, arrecadamentos.valor_pago as valor_pago, arrecadamentos.id as arrecadamento_id ').
-        joins(:arrecadamentos, :arrecadacoes).
+        select('usuarios.cpf, usuarios.nome, arrecadamentos.valor_pago as valor_pago, arrecadamentos.id as arrecadamento_id ').
+        joins("INNER JOIN arrecadamentos ON arrecadamentos.usuario_id = usuarios.id " +
+              "INNER JOIN arrecadacoes ON arrecadacoes.id = arrecadamentos.arrecadacao_id").
         where("arrecadamentos.valor_pago > 0 and arrecadacoes.id = :arrec_id", arrec_id: arrecadacao_id).
         order('usuarios.nome')
     end
@@ -19,6 +20,6 @@ class Usuario < ApplicationRecord
     # validates_presence_of :nome, message: " - deve ser preenchido"
     # validates_uniqueness_of :nome, message: " - nome já cadastrado"
 
-    validates_presence_of :nome, message: :nome_deve_ser_preenchido
-    validates_uniqueness_of :nome, message: :nome_existente
+    # validates_presence_of :nome, message: :nome_deve_ser_preenchido
+    # validates_uniqueness_of :nome, message: :nome_existente
 end

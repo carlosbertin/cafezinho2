@@ -2,7 +2,7 @@ class ComprasController < ApplicationController
     include ArrecadacoesHelper
 
     def index
-        @compras = Compra.includes(:produto, :arrecadacao)
+        @compras = Compra.includes(:produto, :arrecadacao).order('arrecadacoes.id, produtos.nome').search(params[:search])
     end
 
     def destroy
@@ -14,6 +14,10 @@ class ComprasController < ApplicationController
     def show
         @compra = Compra.find(params[:id])
     end
+
+    # def getbusca
+    #     @compras = Compra.search(params[:search])
+    # end
 
     def new
         @compra = Compra.new
