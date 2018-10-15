@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Cafezinho</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <header class='navbar navbar-fixed-top navbar-inverse'>
+      <title>Cafezinho</title>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
+      <div class='navbar-inner'>
+        <div class='container'>
+          <nav>
+            <ul class='nav pull-right'>
+              <li><%= link_to 'Home', root_path %></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header> 
 
   <body>
-    <table bgcolor='#F4A460' width='100%'>
-      <tr>
-        <td><b><%=link_to 'Home', root_path %></b></td>
-      </tr>
-    </table>
-    </br>
+
     <%= yield %>
-    </br></br>
-    <table bgcolor='#F4A460' width='100%'>
-      <tr>
-        <td></br></td>
-      </tr>
-    </table>
+
   </body>
 </html>

@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Cafezinho</title>
-  </head>
 
   <body>
-    <table width='100%'>
-        <tr>
-            <td align='center' colspan='2'><h1>Bem vindo ao sistema de Cafezinho</h1></td>
-        </tr>
-        <tr>
-            <td valign='top'>
-                <li><%=link_to 'Controle de Usuários', controller: 'usuarios', action: 'index' %></li>
-                <li><%=link_to 'Controle de Produtos', controller: 'produtos', action: 'index' %></li>
-                <li><%=link_to 'Controle de Arrecadações', controller: 'arrecadacoes', action: 'index' %></li>
-                <li><%=link_to 'Controle das Compras', controller: 'compras', action: 'index' %></li>
-            </td>
-            <td><img src='../imagens/cafezinho.png'  width='250' height='250' alt='Cafezinho' /></td>
-        </tr>
+    </br></br></br></br></br>
+    <table class="table">
+        <thead> 
+            <tr>
+                <td align='center' colspan='2'><h1>Bem vindo ao sistema de Cafezinho</h1></td>
+            </tr>
+            <tr>
+                <td valign='top'>
+                    <li><%=link_to 'Controle de Usuários', controller: 'usuarios', action: 'index' %></li>
+                    <li><%=link_to 'Controle de Produtos', controller: 'produtos', action: 'index' %></li>
+                    <li><%=link_to 'Controle de Arrecadações', controller: 'arrecadacoes', action: 'index' %></li>
+                    <li><%=link_to 'Controle das Compras', controller: 'compras', action: 'index' %></li>
+                </td>
+                <td><img src='../imagens/cafezinho.png'  width='250' height='250' alt='Cafezinho' /></td>
+            </tr>
+        </thead>
     </table>
   </body>
+
 </html>
