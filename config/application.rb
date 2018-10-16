@@ -17,5 +17,10 @@ module Cafezinho2
     # the framework and any gems in your application.
 
     config.i18n.default_locale = 'pt-BR'
+
+    config.generators do |g|
+      g.test_framework :rspec
+    end
+
   end
 end

@@ -63,6 +63,9 @@ group :development do
 end
 
 group :test do
+  gem 'shoulda-matchers'
+  gem 'rails-controller-testing' # If you are using Rails 5.x
+
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'

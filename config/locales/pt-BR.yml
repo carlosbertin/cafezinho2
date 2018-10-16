@@ -43,12 +43,15 @@ pt-BR:
           attributes:
             nome:
               nome_deve_ser_preenchido: ' - deve ser preenchido'
-              nome_existente: ' - nome já cadastrado'
+              nome_existente: ' - já cadastrado'
+            cpf:
+              cpf_deve_ser_preenchido: ' - ser preenchido'
+              cpf_existente: ' - já cadastrado'
         produto:
           attributes:
             nome:
               nome_deve_ser_preenchido: ' - deve ser preenchido'
-              nome_existente: ' - nome já cadastrado'
+              nome_existente: ' - já cadastrado'
             unidade:
               unidade_deve_ser_preenchida: ' - deve ser preenchida'
         arrecadamento:
