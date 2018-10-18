@@ -45,7 +45,7 @@ pt-BR:
               nome_deve_ser_preenchido: ' - deve ser preenchido'
               nome_existente: ' - já cadastrado'
             cpf:
-              cpf_deve_ser_preenchido: ' - ser preenchido'
+              cpf_deve_ser_preenchido: ' - deve ser preenchido'
               cpf_existente: ' - já cadastrado'
         produto:
           attributes:
