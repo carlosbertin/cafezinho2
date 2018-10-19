@@ -45,6 +45,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'database_cleaner'
   gem 'rspec-rails'
+  gem 'faker'
 end
 
 # Use Capistrano for deployment

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :usuario do
-    nome "Rafaela"
-    cpf "12345678901"
+    nome { Faker::Artist.name }
+    cpf { Faker::Number.leading_zero_number(11) }
   end
 
   # No console (rails c) terei que chamar a classe FactoryBot.
