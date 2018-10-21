@@ -1,4 +1,5 @@
 FactoryBot.define do
+  
   factory :usuario do
     nome { Faker::Artist.name }
     cpf { Faker::Number.leading_zero_number(11) }

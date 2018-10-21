@@ -78,6 +78,6 @@ Shoulda::Matchers.configure do |config|
     with.library :active_model
     # with.library :action_controller
     # Or, choose all of the above:
-    # with.library :rails
+    #with.library :rails
   end
 end

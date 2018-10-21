@@ -1,7 +1,7 @@
 FactoryBot.define do
     factory :arrecadamento do
-      usuario_id 1
-      arrecadacao_id 2
-      valor_pago 5.50
+      usuario
+      arrecadacao
+      valor_pago { Faker::Number.leading_zero_number(2) }
     end
 end
