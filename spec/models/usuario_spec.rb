@@ -29,22 +29,23 @@ RSpec.describe Usuario, type: :model do
       it { should have_many(:arrecadacoes).through(:arrecadamentos) }
   end
 
-  # describe 'testando a Named Scopes' do
-  #   describe 'usuario_com_pagamento' do
-  #     let(:usuario) { FactoryBot.create(:usuario) }
-  #     let(:arrecadacao) { FactoryBot.create(:arrecadacao) }
-  #     let(:arrecadamento) { FactoryBot.create(:arrecadamento, usuario_id: usuario.id, arrecadacao_id: arrecadacao.id) }
+  describe 'Scopes' do
+     let!(:usuario_sem_pagamento) { create(:usuario) }
+     let(:usuario_com_pagamento) { create(:usuario) }
+     let(:arrecadacao) { create(:arrecadacao) }
+     let!(:arrecadamento) { create(:arrecadamento, usuario: usuario_com_pagamento, arrecadacao: arrecadacao) }
 
-  #     it 'retorna usuário que efetuou pagamento em um determinado mês/ano' do
-  #       expect(Usuario.usuario_com_pagamento(arrecadamento.id)).to include(arrecadamento)
-  #     end
-  #   end
+     describe 'usuario_com_pagamento' do
+       it 'retorna usuário que efetuou pagamento em um determinado mês/ano' do
+         expect(Usuario.usuario_com_pagamento(arrecadamento.id)).to match_array(usuario_com_pagamento)
+       end
+    end
 
-  #   describe 'usuario_pendente_pagamento' do
-  #     it 'retorna usuário que ainda NÃO efetuou pagamento em um determinado mês/ano' do
-  #       expect(Usuario.usuario_pendente_pagamento(1).to_sql).to eq Usuario.usuario_pendente_pagamento(1).to_sql
-  #     end
-  #   end
-  # end
+     describe 'usuario_pendente_pagamento' do
+       it 'retorna usuário que ainda NÃO efetuou pagamento em um determinado mês/ano' do
+          expect(Usuario.usuario_pendente_pagamento(arrecadamento.id)).to match_array(usuario_sem_pagamento)
+       end
+     end
+   end
 
 end
